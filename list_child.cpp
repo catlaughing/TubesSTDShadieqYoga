@@ -64,3 +64,15 @@ void insertAfter(address_child &Prec, address_child P) {
     prev(P) = Prec;
     next(Prec) = P;
 }
+
+void deleteAfter(address_child Prec, address_child &P)
+{
+    if (Prec != NULL && next(Prec) != NULL)
+    {
+        P = next(Prec);
+        next(Prec) =  next(P);
+        prev(next(P)) = Prec;
+        next(P) = NULL;
+        prev(P) = NULL;
+    }
+}

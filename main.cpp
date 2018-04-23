@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <string>
 
 using namespace std;
 #include "list_child.h"
@@ -9,6 +10,7 @@ void menu(bool start, List_child &LC, List_parent &LP);
 void option(List_child &LC, List_parent &LP);
 List_parent LP;
 List_child LC;
+string password = "apakek";
 int main()
 {
     createList(LP);
@@ -63,7 +65,10 @@ void menu(bool start, List_child &LC, List_parent &LP)
 
     if (pilihan == 0)
     {
-        option(LC,LP);
+        string pass;
+        cin>>pass;
+        if (pass == password)
+            option(LC,LP);
     }
     else
     {
@@ -80,6 +85,24 @@ void menu(bool start, List_child &LC, List_parent &LP)
         system ("CLS");
         cout<<"Film yang sedang tayang pada teater "<<pilih->info<<endl;
         printInfo(pilih->child);
+        cout<<"Ketik judul film yang anda inginkan: ";
+        string jupil;
+        cin>>jupil;
+        address_child fipil = findElm(LC, jupil);
+        if (fipil == NULL)
+            cout<<"Film tidak tersedia di teater ini"<<endl;
+        else
+        {
+            cout<<"Judul: "<<info(fipil).judul<<endl;
+            cout<<"Genre: "<<info(fipil).genre<<endl;
+            cout<<"Rating: "<<info(fipil).rating<<endl;
+            cout<<endl;
+            cout<<"Jumlah tiket yang anda inginkan: "<<endl;
+            int tiket;
+            cin>>tiket;
+            cout<<"Total harga: "<<"Rp"<<tiket*30000;
+
+        }
         system ("PAUSE");
     }
 
@@ -149,6 +172,7 @@ void option(List_child &LC, List_parent &LP)
             cout<<"Judul film yang ingin dihapus: ";
             cin>>judulfilm;
             address_child erasedfilm = findElm(LC, judulfilm);
+            address_child filmbuangan;
             teater* P = first(LP);
             do
             {
@@ -161,6 +185,7 @@ void option(List_child &LC, List_parent &LP)
                     while ((Q != NULL) && (next(Q) != NULL))
                     {
                         deleteAfter(Q, R);
+                        delete R;
                     }
                     Q = next(Q);
                 }
@@ -168,6 +193,8 @@ void option(List_child &LC, List_parent &LP)
                 P = next(P);
             }
             while(P != first(LP));
+            deleteAfter(prev(erasedfilm), filmbuangan);
+            delete filmbuangan;
             break;
         }
     case 5 :
