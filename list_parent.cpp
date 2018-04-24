@@ -70,3 +70,24 @@ address_parent findElm(List_parent L, infotype_parent x) {
     } while(P != first(L));
     return NULL;
 }
+
+void deleteAfter(List_parent &L, address_parent Prec, address_parent &P) {
+    P = next(Prec);
+    next(Prec)= next(P);
+    next(P)= NULL;
+}
+
+void deleteFirst(List_parent &L, address_parent &P) {
+    if(first(L) != NULL) {
+        P = first(L);
+        address_parent Q = first(L);
+        do
+        {
+            Q = next(Q);
+        }while(next(Q) != first(L));
+        next(Q) = next(P);
+        first(L) = next(Q);
+        next(P) = NULL;
+
+    }
+}
