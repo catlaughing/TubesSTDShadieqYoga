@@ -30,6 +30,7 @@ void insertLast(List_child &L, address_child P) {
         first(L) = P;
     } else {
         last(L)->next = P;
+        prev(P) = last(L);
         last(L) = P;
     }
 }
@@ -65,6 +66,14 @@ void insertAfter(address_child &Prec, address_child P) {
     next(Prec) = P;
 }
 
+void deleteLast(List_child &L, address_child &P)
+{
+    P = last(L);
+    last(L) = prev(P);
+    next(last(L)) = NULL;
+    prev(P) = NULL;
+}
+
 void deleteAfter(address_child Prec, address_child &P)
 {
     if (Prec != NULL && next(Prec) != NULL)
@@ -75,4 +84,22 @@ void deleteAfter(address_child Prec, address_child &P)
         next(P) = NULL;
         prev(P) = NULL;
     }
+}
+
+void deleteFirst(List_child &L, address_child &P)
+{
+    if (next(first(L)) == NULL)
+    {
+        P = first(L);
+        first(L) = NULL;
+    }
+
+    else
+    {
+        P = first(L);
+        first(L) = next(P);
+        prev(first(L)) = NULL;
+    }
+    next(P) = NULL;
+    prev(P) = NULL;
 }

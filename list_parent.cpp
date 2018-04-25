@@ -40,6 +40,55 @@ void insertLast(List_parent &L, address_parent P) {
     }
 }
 
+void insertFirst(List_parent &L, address_parent P) {
+    /**
+    * IS : List_parent L mungkin kosong
+    * FS : elemen yang ditunjuk P menjadi elemen pertama pada List_parent L
+    *      next dari last elemen menunjuk ke first elemen
+    */
+    address_parent Q;
+    if(first(L) == NULL) {
+        first(L) = P;
+        next(P) = P;
+    } else {
+        Q = first(L);
+        while(next(Q) != first(L)) {
+            Q = next(Q);
+        }
+        next(P) = first(L);
+        first(L) = P;
+        next(Q) = P;
+    }
+}
+
+void insertAfter(List_parent &L, address_parent Prec, address_parent P)
+{
+    if (next(Prec) == first(L))
+        insertLast(L,P);
+    else
+    {
+        next(P) = next(Prec);
+        next(Prec) = P;
+    }
+}
+
+void InsertAndSort(List_parent &L, address_parent P)
+{
+    if (first(L) == NULL || info(P) < info(first(L)))
+        insertFirst(L,P);
+    else if(findElm(L,info(P)) == NULL)
+    {
+        address_parent Q = first(L);
+        do
+        {
+            Q = next(Q);
+        }while (next(Q) != first(L) && info(next(Q)) < info(P));
+        insertAfter(L,Q,P);
+    }
+    else
+        cout<<"Duplicate"<<endl;
+}
+
 
 void printInfo(List_parent L) {
     /**

@@ -44,4 +44,6 @@ address_parent findElm(List_parent L, infotype_parent x);
 void printInfo(List_parent L);
 
 
+void InsertAndSort(List_parent &L, address_parent P);
+
 #endif // LIST_PARENT_H_INCLUDED

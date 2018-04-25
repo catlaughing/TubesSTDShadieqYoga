@@ -6,6 +6,7 @@
 using namespace std;
 #include "list_child.h"
 #include "list_parent.h"
+#include "Tubes.h"
 
 void menu(bool start, List_child &LC, List_parent &LP);
 void option(List_child &LC, List_parent &LP);
@@ -142,166 +143,33 @@ void option(List_child &LC, List_parent &LP)
     {
     case 1 :
         {
-            film baru;
-            cout<<"Judul: ";
-            cin.ignore();
-            getline(cin,baru.judul);
-            cout<<"Genre: ";
-            getline(cin,baru.genre);
-            cout<<"Rating: ";
-            cin>>baru.rating;
-            insertLast(LC, alokasi(baru));
-            system("CLS");
+            InsertNewFilm(LC,LP);
             break;
         }
     case 2 :
         {
-            cout<<"Pilih teater yang ingin diganti filmnya: "<<endl;
-            printInfo(LP);
-            cout<<"Teater pilihan anda: ";
-            int tepil;
-            cin>>tepil;
-            cout<<endl;
-            teater *tepill = findElm(LP, tepil);
-            cout<<"Film yang tayang pada teater "<<tepil<<": "<<endl;
-            printInfo(child(tepill));
-            if (first(child(tepill)) == NULL)
-            {
-                break;
-            }
-            else {
-                cout<<"Film yang tersedia :"<<endl;
-                printInfo(LC);
-                cout<<"Judul film yang ingin diganti: ";
-                string juduldiganti;
-                cin.ignore();
-                getline(cin,juduldiganti);
-                address_child filmdiganti = findElm(LC, juduldiganti);
-                address_relasi alamatfilm = findElm(child(tepill), filmdiganti);
-                cout<<"Film baru: ";
-                string judulpengganti;
-                cin.ignore();
-                getline(cin,judulpengganti);
-                address_child filmpengganti = findElm(LC, judulpengganti);
-                alamatfilm->info = filmpengganti;
-                printInfo(child(tepill));
-                system("CLS");
-                break;
-            }
+            ChangeFilm(LC,LP);
+            break;
         }
     case 3 :
         {
-            cout<<"Teater yang ada saat ini"<<endl;
-            printInfo(LP);
-            cout<<endl;
-            int noteater;
-            cout<<"Nomor teater baru: ";
-            cin>>noteater;
-            teater* newteater = alokasi(noteater);
-            insertLast(LP, newteater);
-            cout<<"Teater berhasil dibangun"<<endl;
-            system("PAUSE");
-            system("CLS");
+            NewTeater(LP);
             break;
         }
     case 4 :
         {
-            printInfo(LC);
-            string judulfilm;
-            cout<<"Judul film yang ingin dihapus: ";
-            cin.ignore();
-            getline(cin,judulfilm);
-            address_child erasedfilm = findElm(LC, judulfilm);
-            address_child filmbuangan;
-            teater* P = first(LP);
-            do
-            {
-                address_relasi Q = first(child(P));
-                address_relasi R;
-                if ((Q!=NULL) && (info(first(child(P))) == erasedfilm))
-                    deleteFirst(child(P), R);
-                else if (Q!=NULL)
-                {
-                    while ((Q != NULL) && (next(Q) != NULL))
-                    {
-                        deleteAfter(Q, R);
-                        delete R;
-                    }
-                    Q = next(Q);
-                }
-                printInfo(child(P));
-                P = next(P);
-            }
-            while(P != first(LP));
-            deleteAfter(prev(erasedfilm), filmbuangan);
-            delete filmbuangan;
-            system("CLS");
+            DeleteFilm(LC,LP);
             break;
         }
     case 5 :
         {
-            printInfo(LC);
-            string judulfilm;
-            int noteater;
-            cout<<"Judul film yang ingin ditambahkan: ";
-            cin.ignore();
-            getline(cin,judulfilm);
-            if (findElm(LC, judulfilm) == NULL)
-            {
-                cout<<"Film tidak tersedia"<<endl;
-                break;
-            }
-            printInfo(LP);
-            cout<<"Teater yang diinginkan: ";
-            cin>>noteater;
-            address_child Q = findElm(LC, judulfilm);
-            address_parent P= findElm(LP,noteater);
-            insertFirst(child(P), alokasi(Q));
-            printInfo(child(P));
-            cout<<endl;
-            cout<<"Film berhasil ditambahkan ke teater "<<noteater<<endl;
-            system ("PAUSE");
-            system("CLS");
+            FilmToTeater(LC,LP);
             break;
         }
     case 6 :
         {
-            cout<<"Teater yang tersedia: "<<endl;
-            printInfo(LP);
-            int tecur;
-            cout<<"Teater yang ingin dihancurkan :";
-            cin>>tecur;
-            address_parent P = findElm(LP, tecur);
-            address_parent R;
-            address_parent S;
-            address_relasi Q;
-            if (P != NULL)
-            {
-                while (first(child(P)) != NULL)
-                {
-                    deleteFirst(child(P),Q);
-                    delete Q;
-                }
-                if (P == first(LP))
-                {
-                    deleteFirst(LP,S);
-                    cout<<"Teater berhasil dihancurkan"<<endl;
-                }
-                else
-                {
-                    R = first(LP);
-                    while (next(R) != P)
-                    {
-                        R = next(R);
-                    }
-                    deleteAfter(LP,R,S);
-                    cout<<"Teater berhasil dihancurkan"<<endl;
-                }
-                delete S;
-                system ("PAUSE");
-                system ("CLS");
-                break;
-            }
+            DelTeater(LC,LP);
+            break;
         }
     }
 }
