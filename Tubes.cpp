@@ -15,6 +15,5 @@ NIM :130117
     cout<<"Rating: ";
     cin>>baru.rating;
     insertLast(LC, alokasi(baru));
-    break;
 }
 
