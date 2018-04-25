@@ -66,11 +66,18 @@ void menu(bool start, List_child &LC, List_parent &LP)
 
     if (pilihan == 0)
     {
-//        string pass;
-//        cin>>pass;
-//        if (pass == password)
+        cout<<"Masukkan kata sandi: ";
+        string pass;
+        cin>>pass;
+        if (pass == password) {
             system ("CLS");
             option(LC,LP);
+        }
+        else {
+            cout<<"Kata sandi salah"<<endl;
+            system("PAUSE");
+            system("CLS");
+        }
     }
     else
     {
@@ -176,12 +183,15 @@ void option(List_child &LC, List_parent &LP)
         }
     case 3 :
         {
+            cout<<"Teater yang ada saat ini"<<endl;
+            printInfo(LP);
+            cout<<endl;
             int noteater;
             cout<<"Nomor teater baru: ";
             cin>>noteater;
             teater* newteater = alokasi(noteater);
             insertLast(LP, newteater);
-            cout<<"Teater berhasil dibangun";
+            cout<<"Teater berhasil dibangun"<<endl;
             system("PAUSE");
             system("CLS");
             break;
