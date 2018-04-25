@@ -108,17 +108,6 @@ void menu(bool start, List_child &LC, List_parent &LP)
             cout<<"Judul: "<<info(info(repil)).judul<<endl;
             cout<<"Genre: "<<info(info(repil)).genre<<endl;
             cout<<"Rating: "<<info(info(repil)).rating<<endl;
-        cin>>jupil;
-        cout<<endl;
-        address_child fipil = findElm(LC, jupil);
-        if (fipil == NULL)
-            cout<<"Film tidak tersedia di teater ini"<<endl;
-        else
-        {
-            cout<<"Judul : "<<info(fipil).judul<<endl;
-            cout<<"Genre : "<<info(fipil).genre<<endl;
-            cout<<"Rating: "<<info(fipil).rating<<endl;
-            cout<<endl;
             cout<<"Jumlah tiket yang anda inginkan: ";
             int tiket;
             cin>>tiket;
@@ -131,12 +120,11 @@ void menu(bool start, List_child &LC, List_parent &LP)
             else
                 cout<<"Silahkan memilih film yang lain !"<<endl;
         }
-        }
-        system ("PAUSE");
-        system ("CLS");
     }
-
+    system ("PAUSE");
+    system ("CLS");
 }
+
 
 void option(List_child &LC, List_parent &LP)
 {
@@ -186,12 +174,14 @@ void option(List_child &LC, List_parent &LP)
                 printInfo(LC);
                 cout<<"Judul film yang ingin diganti: ";
                 string juduldiganti;
-                cin>>juduldiganti;
+                cin.ignore();
+                getline(cin,juduldiganti);
                 address_child filmdiganti = findElm(LC, juduldiganti);
                 address_relasi alamatfilm = findElm(child(tepill), filmdiganti);
                 cout<<"Film baru: ";
                 string judulpengganti;
-                cin>>judulpengganti;
+                cin.ignore();
+                getline(cin,judulpengganti);
                 address_child filmpengganti = findElm(LC, judulpengganti);
                 alamatfilm->info = filmpengganti;
                 printInfo(child(tepill));
@@ -219,7 +209,8 @@ void option(List_child &LC, List_parent &LP)
             printInfo(LC);
             string judulfilm;
             cout<<"Judul film yang ingin dihapus: ";
-            cin>>judulfilm;
+            cin.ignore();
+            getline(cin,judulfilm);
             address_child erasedfilm = findElm(LC, judulfilm);
             address_child filmbuangan;
             teater* P = first(LP);
@@ -253,7 +244,8 @@ void option(List_child &LC, List_parent &LP)
             string judulfilm;
             int noteater;
             cout<<"Judul film yang ingin ditambahkan: ";
-            cin>>judulfilm;
+            cin.ignore();
+            getline(cin,judulfilm);
             printInfo(LP);
             cout<<"Teater yang diinginkan: ";
             cin>>noteater;
