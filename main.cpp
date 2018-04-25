@@ -33,7 +33,7 @@ int main()
     rampage.genre = "Fantasy";
     rampage.rating = "PG-13";
 
-    avenger.judul = "Avenger: Infinity War";
+    avenger.judul = "Avenger";
     avenger.genre = "Action";
     avenger.rating = "PG-13";
 
@@ -246,6 +246,11 @@ void option(List_child &LC, List_parent &LP)
             cout<<"Judul film yang ingin ditambahkan: ";
             cin.ignore();
             getline(cin,judulfilm);
+            if (findElm(LC, judulfilm) == NULL)
+            {
+                cout<<"Film tidak tersedia"<<endl;
+                break;
+            }
             printInfo(LP);
             cout<<"Teater yang diinginkan: ";
             cin>>noteater;
