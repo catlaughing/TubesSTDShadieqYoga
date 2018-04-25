@@ -107,7 +107,7 @@
 1524548831 d:\strukdat\tubesys\list_child.h
 	<iostream>
 
-1524549258 source:d:\strukdat\tubesys\list_parent.cpp
+1524664630 source:d:\strukdat\tubesys\list_parent.cpp
 	"list_parent.h"
 
 1524548831 d:\strukdat\tubesys\list_parent.h
@@ -119,14 +119,13 @@
 	"list_child.h"
 	<iostream>
 
-1524552942 source:d:\strukdat\tubesys\list_relasi.cpp
+1524665146 source:d:\strukdat\tubesys\list_relasi.cpp
 	"list_relasi.h"
 
-1524663558 source:d:\strukdat\tubesys\main.cpp
+1524665146 source:d:\strukdat\tubesys\main.cpp
 	<iostream>
 	<conio.h>
 	<string>
-	<cstdlib>
 	"list_child.h"
 	"list_parent.h"
 
