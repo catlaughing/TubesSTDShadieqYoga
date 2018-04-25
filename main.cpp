@@ -83,27 +83,37 @@ void menu(bool start, List_child &LC, List_parent &LP)
         }
 
         system ("CLS");
-        cout<<"Film yang sedang tayang pada teater "<<pilih->info<<endl;
+        cout<<"Film yang sedang tayang pada teater "<<pilih->info<<endl<<endl;
         printInfo(pilih->child);
+        cout<<endl;
         cout<<"Ketik judul film yang anda inginkan: ";
         string jupil;
-        cin>>jupil;
-        address_child fipil = findElm(LC, jupil);
-        if (fipil == NULL)
+        cin.ignore();
+        getline(cin,jupil);
+        address_relasi repil = findElm(child(pilih),findElm(LC,jupil));
+        system ("CLS");
+        if (repil == NULL)
             cout<<"Film tidak tersedia di teater ini"<<endl;
         else
         {
-            cout<<"Judul: "<<info(fipil).judul<<endl;
-            cout<<"Genre: "<<info(fipil).genre<<endl;
-            cout<<"Rating: "<<info(fipil).rating<<endl;
+            cout<<"Judul: "<<info(info(repil)).judul<<endl;
+            cout<<"Genre: "<<info(info(repil)).genre<<endl;
+            cout<<"Rating: "<<info(info(repil)).rating<<endl;
             cout<<endl;
-            cout<<"Jumlah tiket yang anda inginkan: "<<endl;
+            cout<<"Jumlah tiket yang anda inginkan: ";
             int tiket;
             cin>>tiket;
-            cout<<"Total harga: "<<"Rp"<<tiket*30000;
-
+            cout<<"Total harga: "<<"Rp"<<tiket*30000<<endl;
+            cout<<"Konfirmasi Pembelian [Y/N]: ";
+            string jawab;
+            cin>>jawab;
+            if (jawab == "Y")
+                cout<<"Selamat Menikmati Film Anda !"<<endl;
+            else
+                cout<<"Silahkan memilih film yang lain !"<<endl;
         }
         system ("PAUSE");
+        system ("CLS");
     }
 
 }
@@ -117,6 +127,7 @@ void option(List_child &LC, List_parent &LP)
     cout<<"5. Tambah film ke teater"<<endl;
     cout<<"6. Hancurkan teater"<<endl;
     int choice;
+    cout<<"Pilihan anda: ";
     cin>>choice;
     switch (choice)
     {
@@ -124,9 +135,10 @@ void option(List_child &LC, List_parent &LP)
         {
             film baru;
             cout<<"Judul: ";
-            cin>>baru.judul;
+            cin.ignore();
+            getline(cin,baru.judul);
             cout<<"Genre: ";
-            cin>>baru.genre;
+            getline(cin,baru.genre);
             cout<<"Rating: ";
             cin>>baru.rating;
             insertLast(LC, alokasi(baru));

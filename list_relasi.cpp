@@ -21,7 +21,7 @@ void printInfo(List_relasi L) {
     if (first(L) == NULL)
         cout<<"Belum ada film"<<endl;
     while(P !=NULL) {
-        cout<<"->"<<info(info(P)).judul<<endl;
+        cout<<"-> "<<info(info(P)).judul<<endl;
         P = next(P);
     }
 }

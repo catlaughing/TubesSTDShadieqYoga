@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Tubes.cpp" />
+		<Unit filename="Tubes.h" />
 		<Unit filename="list_child.cpp" />
 		<Unit filename="list_child.h" />
 		<Unit filename="list_parent.cpp" />

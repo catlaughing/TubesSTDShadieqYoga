@@ -91,10 +91,10 @@
 	"list_child.h"
 	<iostream>
 
-1524408777 source:d:\c++\asd_multilist-master\tubesys\list_relasi.cpp
+1524542340 source:d:\c++\asd_multilist-master\tubesys\list_relasi.cpp
 	"list_relasi.h"
 
-1524492953 source:d:\c++\asd_multilist-master\tubesys\main.cpp
+1524543718 source:d:\c++\asd_multilist-master\tubesys\main.cpp
 	<iostream>
 	<conio.h>
 	<string>
