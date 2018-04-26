@@ -39,4 +39,6 @@ address_relasi findElm(List_relasi L, address_child C);
 void printInfo(List_relasi L);
 
 
+
+
 #endif // LIST_RELASI_H_INCLUDED

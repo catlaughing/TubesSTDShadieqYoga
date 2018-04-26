@@ -15,5 +15,7 @@ void NewTeater(List_parent &LP); //Yoga
 void DeleteFilm(List_child &LC, List_parent &LP);
 void FilmToTeater(List_child &LC, List_parent &LP);
 void DelTeater(List_child &LC, List_parent &LP); //Yoga
+bool isConnected(address_parent P, address_child Q);
+void cekRelasi(List_child &LC, List_parent &LP);
 
 

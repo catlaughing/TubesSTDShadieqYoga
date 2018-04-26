@@ -59,9 +59,11 @@ void menu(bool start, List_child &LC, List_parent &LP)
     if (first(child(first(LP))) == NULL)
         insertFirst(child(first(LP)), alokasi(findElm(LC, "Rampage")));
 
-    cout<<"Welcome to YS Cinema"<<endl;
+    cout<<"Welcome to YS Cinema"<<endl<<endl;
     cout<<"Silahkan pilih teater"<<endl;
     printInfo(LP);
+    cout<<endl;
+    cout<<"(Tekan 0 untuk menjadi administrator)"<<endl;
     cout<<"Pilihan anda: ";
     cin>>pilihan;
 
@@ -70,11 +72,13 @@ void menu(bool start, List_child &LC, List_parent &LP)
         cout<<"Masukkan kata sandi: ";
         string pass;
         cin>>pass;
-        if (pass == password) {
+        if (pass == password)
+        {
             system ("CLS");
             option(LC,LP);
         }
-        else {
+        else
+        {
             cout<<"Kata sandi salah"<<endl;
             system("PAUSE");
             system("CLS");
@@ -93,33 +97,41 @@ void menu(bool start, List_child &LC, List_parent &LP)
         }
 
         system ("CLS");
-        cout<<"Film yang sedang tayang pada teater "<<pilih->info<<endl<<endl;
-        printInfo(pilih->child);
-        cout<<endl;
-        cout<<"Ketik judul film yang anda inginkan: ";
-        string jupil;
-        cin.ignore();
-        getline(cin,jupil);
-        address_relasi repil = findElm(child(pilih),findElm(LC,jupil));
-        system ("CLS");
-        if (repil == NULL)
-            cout<<"Film tidak tersedia di teater ini"<<endl;
+        if (first(child(pilih)) == NULL)
+        {
+            printInfo(child(pilih));
+        }
+
         else
         {
-            cout<<"Judul: "<<info(info(repil)).judul<<endl;
-            cout<<"Genre: "<<info(info(repil)).genre<<endl;
-            cout<<"Rating: "<<info(info(repil)).rating<<endl;
-            cout<<"Jumlah tiket yang anda inginkan: ";
-            int tiket;
-            cin>>tiket;
-            cout<<"Total harga: "<<"Rp"<<tiket*30000<<endl;
-            cout<<"Konfirmasi Pembelian [Y/N]: ";
-            string jawab;
-            cin>>jawab;
-            if (jawab == "Y")
-                cout<<"Selamat Menikmati Film Anda !"<<endl;
+            cout<<"Film yang sedang tayang pada teater "<<pilih->info<<endl<<endl;
+            printInfo(pilih->child);
+            cout<<endl;
+            cout<<"Ketik judul film yang anda inginkan: ";
+            string jupil;
+            cin.ignore();
+            getline(cin,jupil);
+            address_relasi repil = findElm(child(pilih),findElm(LC,jupil));
+            system ("CLS");
+            if (repil == NULL)
+                cout<<"Film tidak tersedia di teater ini"<<endl;
             else
-                cout<<"Silahkan memilih film yang lain !"<<endl;
+            {
+                cout<<"Judul: "<<info(info(repil)).judul<<endl;
+                cout<<"Genre: "<<info(info(repil)).genre<<endl;
+                cout<<"Rating: "<<info(info(repil)).rating<<endl;
+                cout<<"Jumlah tiket yang anda inginkan: ";
+                int tiket;
+                cin>>tiket;
+                cout<<"Total harga: "<<"Rp"<<tiket*30000<<endl;
+                cout<<"Konfirmasi Pembelian [Y/N]: ";
+                string jawab;
+                cin>>jawab;
+                if (jawab == "Y")
+                    cout<<"Selamat Menikmati Film Anda !"<<endl;
+                else
+                    cout<<"Silahkan memilih film yang lain !"<<endl;
+            }
         }
     }
     system ("PAUSE");
@@ -134,7 +146,8 @@ void option(List_child &LC, List_parent &LP)
     cout<<"3. Bangun teater baru"<<endl;
     cout<<"4. Hapus film"<<endl;
     cout<<"5. Tambah film ke teater"<<endl;
-    cout<<"6. Hancurkan teater"<<endl<<endl;
+    cout<<"6. Hancurkan teater"<<endl;
+    cout<<"7. Cek Relasi"<<endl<<endl;
     int choice;
     cout<<"Masukkan pilihan anda: ";
     cin>>choice;
@@ -142,34 +155,40 @@ void option(List_child &LC, List_parent &LP)
     switch (choice)
     {
     case 1 :
-        {
-            InsertNewFilm(LC,LP);
-            break;
-        }
+    {
+        InsertNewFilm(LC,LP);
+        break;
+    }
     case 2 :
-        {
-            ChangeFilm(LC,LP);
-            break;
-        }
+    {
+        ChangeFilm(LC,LP);
+        break;
+    }
     case 3 :
-        {
-            NewTeater(LP);
-            break;
-        }
+    {
+        NewTeater(LP);
+        break;
+    }
     case 4 :
-        {
-            DeleteFilm(LC,LP);
-            break;
-        }
+    {
+        DeleteFilm(LC,LP);
+        break;
+    }
     case 5 :
-        {
-            FilmToTeater(LC,LP);
-            break;
-        }
+    {
+        FilmToTeater(LC,LP);
+        break;
+    }
     case 6 :
-        {
-            DelTeater(LC,LP);
-            break;
-        }
+    {
+        DelTeater(LC,LP);
+        break;
+    }
+    case 7 :
+    {
+        cekRelasi(LC,LP);
+        break;
+    }
+
     }
 }

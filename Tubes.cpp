@@ -1,4 +1,5 @@
 #include "Tubes.h"
+#include <cstdlib>
 
 void InsertNewFilm(List_child &LC, List_parent &LP)
 /**
@@ -7,10 +8,10 @@ NIM :130117
 **/
 {
     film baru;
-    cout<<"Judul: ";
+    cout<<"Judul : ";
     cin.ignore();
     getline(cin,baru.judul);
-    cout<<"Genre: ";
+    cout<<"Genre : ";
     getline(cin,baru.genre);
     cout<<"Rating: ";
     cin>>baru.rating;
@@ -53,7 +54,6 @@ NIM : 1301171087
         address_child filmpengganti = findElm(LC, judulpengganti);
         alamatfilm->info = filmpengganti;
         printInfo(child(tepill));
-        system("CLS");
     }
 }
 
@@ -75,8 +75,6 @@ void NewTeater(List_parent &LP) //Yoga
     {
         cout<<"Duplikat Teater"<<endl;
     }
-    system("PAUSE");
-    system("CLS");
 }
 
 void DeleteFilm(List_child &LC,List_parent &LP)
@@ -121,7 +119,6 @@ void DeleteFilm(List_child &LC,List_parent &LP)
         else
             deleteAfter(prev(erasedfilm), filmbuangan); //disini nih
         delete filmbuangan;
-        system("CLS");
     }
 }
 
@@ -144,12 +141,15 @@ void FilmToTeater(List_child &LC, List_parent &LP)
         cin>>noteater;
         address_child Q = findElm(LC, judulfilm);
         address_parent P= findElm(LP,noteater);
-        insertFirst(child(P), alokasi(Q));
-        printInfo(child(P));
-        cout<<endl;
-        cout<<"Film berhasil ditambahkan ke teater "<<noteater<<endl;
-        system ("PAUSE");
-        system("CLS");
+        if (!isConnected(P,Q)) {
+            insertFirst(child(P), alokasi(Q));
+            printInfo(child(P));
+            cout<<endl;
+            cout<<"Film berhasil ditambahkan ke teater "<<noteater<<endl;
+        }
+        else {
+            cout<<"Film berjudul "<<judulfilm<<" telah tersedia di teater "<<noteater<<endl;
+        }
     }
 }
 
@@ -192,6 +192,32 @@ void DelTeater(List_child &LC, List_parent &LP) //Yoga
     {
         cout<<"Teater tidak ditemukan"<<endl;
     }
-    system ("PAUSE");
-    system ("CLS");
+}
+
+bool isConnected(address_parent P, address_child Q) {
+    address_relasi R = findElm(child(P),Q);
+    return (R != NULL);
+}
+
+
+void cekRelasi(List_child &LC, List_parent &LP) {
+    int noteater;
+    string judul;
+    bool x = false;
+    cout<<"Masukkan judul film: "<<endl;
+    cin.ignore();
+    getline(cin,judul);
+    cout<<"Masukkan nomor teater : "<<endl;
+    cin>>noteater;
+    address_parent P = findElm(LP,noteater);
+    address_child Q = findElm(LC,judul);
+    if (P != NULL && Q != NULL) {
+        x = isConnected(P,Q);
+    }
+    if (x == false) {
+        cout<<"Teater dan film tidak terhubung"<<endl;
+    }
+    else {
+        cout<<"Teater dan film terhubung"<<endl;
+    }
 }
