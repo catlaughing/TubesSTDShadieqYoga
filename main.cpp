@@ -141,13 +141,15 @@ void menu(bool start, List_child &LC, List_parent &LP)
 
 void option(List_child &LC, List_parent &LP)
 {
-    cout<<"1. Tambahkan Film Baru"<<endl;
-    cout<<"2. Ganti Film"<<endl;
-    cout<<"3. Bangun teater baru"<<endl;
+    cout<<"MENU"<<endl<<endl;
+    cout<<"1. Tambahkan film baru"<<endl;
+    cout<<"2. Tambah film ke teater"<<endl;
+    cout<<"3. Ganti film di teater"<<endl;
     cout<<"4. Hapus film"<<endl;
-    cout<<"5. Tambah film ke teater"<<endl;
+    cout<<"5. Bangun teater baru"<<endl;
     cout<<"6. Hancurkan teater"<<endl;
-    cout<<"7. Cek Relasi"<<endl<<endl;
+    cout<<"7. Lihat semua teater dan filmnya"<<endl;
+    cout<<"8. Cek Relasi"<<endl<<endl;
     int choice;
     cout<<"Masukkan pilihan anda: ";
     cin>>choice;
@@ -161,12 +163,12 @@ void option(List_child &LC, List_parent &LP)
     }
     case 2 :
     {
-        ChangeFilm(LC,LP);
+        FilmToTeater(LC,LP);
         break;
     }
     case 3 :
     {
-        NewTeater(LP);
+        ChangeFilm(LC,LP);
         break;
     }
     case 4 :
@@ -176,7 +178,7 @@ void option(List_child &LC, List_parent &LP)
     }
     case 5 :
     {
-        FilmToTeater(LC,LP);
+        NewTeater(LP);
         break;
     }
     case 6 :
@@ -185,6 +187,11 @@ void option(List_child &LC, List_parent &LP)
         break;
     }
     case 7 :
+    {
+        printAll(LP);
+        break;
+    }
+    case 8 :
     {
         cekRelasi(LC,LP);
         break;

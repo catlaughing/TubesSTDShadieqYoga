@@ -58,6 +58,10 @@ NIM : 1301171087
 }
 
 void NewTeater(List_parent &LP) //Yoga
+/**
+Nama : Yoga Ajitama
+NIM :130117
+**/
 {
     cout<<"Teater yang ada saat ini"<<endl;
     printInfo(LP);
@@ -78,6 +82,10 @@ void NewTeater(List_parent &LP) //Yoga
 }
 
 void DeleteFilm(List_child &LC,List_parent &LP)
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
 {
     printInfo(LC);
     string judulfilm;
@@ -123,6 +131,10 @@ void DeleteFilm(List_child &LC,List_parent &LP)
 }
 
 void FilmToTeater(List_child &LC, List_parent &LP)
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
 {
     printInfo(LC);
     string judulfilm;
@@ -154,6 +166,10 @@ void FilmToTeater(List_child &LC, List_parent &LP)
 }
 
 void DelTeater(List_child &LC, List_parent &LP) //Yoga
+/**
+Nama : Yoga Ajitama
+NIM :130117
+**/
 {
     cout<<"Teater yang tersedia: "<<endl;
     printInfo(LP);
@@ -204,10 +220,10 @@ void cekRelasi(List_child &LC, List_parent &LP) {
     int noteater;
     string judul;
     bool x = false;
-    cout<<"Masukkan judul film: "<<endl;
+    cout<<"Masukkan judul film: ";
     cin.ignore();
     getline(cin,judul);
-    cout<<"Masukkan nomor teater : "<<endl;
+    cout<<"Masukkan nomor teater : ";
     cin>>noteater;
     address_parent P = findElm(LP,noteater);
     address_child Q = findElm(LC,judul);
@@ -221,3 +237,22 @@ void cekRelasi(List_child &LC, List_parent &LP) {
         cout<<"Teater dan film terhubung"<<endl;
     }
 }
+
+void printAll(List_parent &LP) //masih salah
+{
+    if (first(LP) == NULL)
+        cout<<"Teater masih kosong"<<endl;
+    else
+    {
+        address_parent P = first(LP);
+        do
+        {
+            cout<<"Teater "<<info(P)<<endl;
+            printInfo(child(P));
+            cout<<endl;
+            P = next(P);
+        }while (P != first(LP));
+    }
+}
+
+
