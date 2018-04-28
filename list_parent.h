@@ -11,6 +11,11 @@ using namespace std;
 #define info(P) P->info
 #define child(P) P->child
 
+/**
+Nama : Yoga Ajitama
+NIM :130117
+**/
+
 typedef int infotype_parent;
 typedef struct elmlist_parent *address_parent;
 typedef struct elmlist_parent teater;

@@ -73,28 +73,28 @@
 	"list_child.h"
 	"list_parent.h"
 
-1524680613 source:d:\c++\asd_multilist-master\tubesys\list_child.cpp
+1524921394 source:d:\c++\asd_multilist-master\tubesys\list_child.cpp
 	"list_child.h"
 
-1523715273 d:\c++\asd_multilist-master\tubesys\list_child.h
+1524921394 d:\c++\asd_multilist-master\tubesys\list_child.h
 	<iostream>
 
-1524677454 source:d:\c++\asd_multilist-master\tubesys\list_parent.cpp
+1524921360 source:d:\c++\asd_multilist-master\tubesys\list_parent.cpp
 	"list_parent.h"
 
-1524677116 d:\c++\asd_multilist-master\tubesys\list_parent.h
+1524921359 d:\c++\asd_multilist-master\tubesys\list_parent.h
 	<iostream>
 	"list_relasi.h"
 
-1519558726 d:\c++\asd_multilist-master\tubesys\list_relasi.h
+1524921412 d:\c++\asd_multilist-master\tubesys\list_relasi.h
 	"list_relasi.h"
 	"list_child.h"
 	<iostream>
 
-1524542340 source:d:\c++\asd_multilist-master\tubesys\list_relasi.cpp
+1524921412 source:d:\c++\asd_multilist-master\tubesys\list_relasi.cpp
 	"list_relasi.h"
 
-1524678782 source:d:\c++\asd_multilist-master\tubesys\main.cpp
+1524922445 source:d:\c++\asd_multilist-master\tubesys\main.cpp
 	<iostream>
 	<conio.h>
 	<string>
@@ -133,10 +133,11 @@
 	"list_parent.h"
 	"Tubes.h"
 
-1524683129 source:d:\c++\asd_multilist-master\tubesys\tubes.cpp
+1524921021 source:d:\c++\asd_multilist-master\tubesys\tubes.cpp
 	"Tubes.h"
+	<cstdlib>
 
-1524677044 d:\c++\asd_multilist-master\tubesys\tubes.h
+1524922244 d:\c++\asd_multilist-master\tubesys\tubes.h
 	<iostream>
 	<conio.h>
 	<string>

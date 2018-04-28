@@ -7,6 +7,11 @@
 #include <iostream>
 using namespace std;
 
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
+
 #define next(P) P->next
 #define first(L) L.first
 #define info(P) P->info
@@ -37,7 +42,6 @@ address_relasi alokasi( address_child C);
 void dealokasi(address_relasi &P);
 address_relasi findElm(List_relasi L, address_child C);
 void printInfo(List_relasi L);
-
 
 
 

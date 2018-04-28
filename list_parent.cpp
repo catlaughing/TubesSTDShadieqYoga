@@ -1,5 +1,11 @@
 #include "list_parent.h"
 
+/**
+Nama : Yoga Ajitama
+NIM :130117
+**/
+
+
 void createList(List_parent &L) {
     /**
     * FS : first(L) diset Nil

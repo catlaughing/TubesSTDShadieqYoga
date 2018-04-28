@@ -1,5 +1,10 @@
 #include "list_relasi.h"
 
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
+
 void createList(List_relasi &L) {
     first(L) = NULL;
 }
@@ -20,10 +25,15 @@ void printInfo(List_relasi L) {
     address_relasi P = first(L);
     if (first(L) == NULL)
         cout<<"Belum ada film"<<endl;
-    while(P !=NULL) {
-        cout<<"-> "<<info(info(P)).judul<<endl;
-        P = next(P);
+    else
+    {
+        cout<<"Film yang tersedia di teater ini"<<endl;
+        while(P !=NULL) {
+            cout<<"-> "<<info(info(P)).judul<<endl;
+            P = next(P);
+        }
     }
+    cout<<endl;
 }
 
 void deleteFirst(List_relasi &L, address_relasi &P)

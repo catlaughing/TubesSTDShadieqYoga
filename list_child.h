@@ -1,6 +1,10 @@
 #ifndef LIST_CHILD_H_INCLUDED
 #define LIST_CHILD_H_INCLUDED
 
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
 
 #include <iostream>
 using namespace std;
@@ -46,6 +50,8 @@ address_child alokasi(infotype_child x);
 void dealokasi(address_child &P);
 address_child findElm(List_child L, string x);
 void printInfo(List_child L);
+void printGenre(List_child L);
+void findGenre(List_child L, string genre);
 
 
 #endif // LIST_CHILD_H_INCLUDED

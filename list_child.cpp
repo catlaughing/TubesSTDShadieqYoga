@@ -1,5 +1,10 @@
 #include "list_child.h"
 
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
+
 void createList(List_child &L) {
     first(L) = NULL;
     last(L) = NULL;
@@ -47,6 +52,39 @@ void printInfo(List_child L) {
     }
 }
 
+void printGenre(List_child L) {
+    address_child P = first(L);
+    int i = 0;
+    int k = 0;
+    bool found;
+    string genres[100];
+    while(P !=NULL) {
+        found = false;
+        for (int j = 0; j < i; j++)
+        {
+            if (genres[j] == info(P).genre)
+                found = true;
+        }
+        if (!found)
+        {
+            cout<<k+1<<". "<<info(P).genre<<endl;
+            k++;
+        }
+        genres[i] = info(P).genre;
+        P = next(P);
+        i++;
+    }
+}
+
+void findGenre(List_child L, string genre)
+{
+    address_child P = first(L);
+    while(P !=NULL) {
+        if (info(P).genre == genre)
+            cout<<"-> "<<info(P).judul<<endl;
+        P = next(P);
+    }
+}
 
 address_child findElm(List_child L, string judul) {
     address_child P = first(L);

@@ -3,8 +3,8 @@
 
 void InsertNewFilm(List_child &LC, List_parent &LP)
 /**
-Nama : Yoga Ajitama
-NIM :130117
+Nama : Nuurshadieq
+NIM : 1301171087
 **/
 {
     film baru;
@@ -15,7 +15,10 @@ NIM :130117
     getline(cin,baru.genre);
     cout<<"Rating: ";
     cin>>baru.rating;
-    insertLast(LC, alokasi(baru));
+    if (findElm(LC, baru.judul) == NULL)
+        insertLast(LC, alokasi(baru));
+    else
+        cout<<"Film telah tersedia"<<endl;
 }
 
 void ChangeFilm(List_child &LC, List_parent &LP)
@@ -155,9 +158,8 @@ NIM : 1301171087
         address_parent P= findElm(LP,noteater);
         if (!isConnected(P,Q)) {
             insertFirst(child(P), alokasi(Q));
+            cout<<"Film berhasil ditambahkan ke teater "<<noteater<<endl<<endl;
             printInfo(child(P));
-            cout<<endl;
-            cout<<"Film berhasil ditambahkan ke teater "<<noteater<<endl;
         }
         else {
             cout<<"Film berjudul "<<judulfilm<<" telah tersedia di teater "<<noteater<<endl;
@@ -211,12 +213,22 @@ NIM :130117
 }
 
 bool isConnected(address_parent P, address_child Q) {
+    /**
+    Nama : Yoga Ajitama
+    NIM : 1301170471
+    **/
     address_relasi R = findElm(child(P),Q);
     return (R != NULL);
 }
 
 
 void cekRelasi(List_child &LC, List_parent &LP) {
+
+/**
+Nama : Yoga Ajitama
+NIM : 1301170471
+**/
+
     int noteater;
     string judul;
     bool x = false;
@@ -238,7 +250,11 @@ void cekRelasi(List_child &LC, List_parent &LP) {
     }
 }
 
-void printAll(List_parent &LP) //masih salah
+void printAll(List_parent &LP)
+/**
+Nama : Yoga Ajitama
+NIM : 1301170471
+**/
 {
     if (first(LP) == NULL)
         cout<<"Teater masih kosong"<<endl;
@@ -255,4 +271,99 @@ void printAll(List_parent &LP) //masih salah
     }
 }
 
+void DiskonekFilmteater(List_relasi &L, address_child C)
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
+{
+    address_relasi P;
+    address_relasi Q = first(L);
+    if (info(Q) == C)
+        deleteFirst(L,P);
+    else
+    {
+        while (info(next(Q)) != C)
+            Q = next(Q);
+        deleteAfter(Q,P);
+    }
+    delete P;
+}
 
+void HapusFilmDariTeater(List_parent &LP, List_child LC)
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
+{
+    int noteater;
+    string judul;
+    printInfo(LP);
+    cout<<"Masukkan nomor teater yang ingin dihapus film nya: ";
+    cin>>noteater;
+    cout<<endl;
+    address_parent P = findElm(LP,noteater);
+
+    printInfo(child(P));
+    cout<<"Masukkan judul yang ingin dihapus: ";
+    cin.ignore();
+    getline(cin, judul);
+    address_child C = findElm(LC, judul);
+    address_relasi R = findElm(child(P),C);
+    if (R != NULL)
+    {
+        DiskonekFilmteater(child(P),C);
+        cout<<"Film berhasil dihapus dari teater "<<noteater<<endl;
+    }
+    else
+        cout<<"Judul tidak tersedia"<<endl;
+}
+
+void RekomedasiGenre(List_child LC, List_parent LP)
+/**
+Nama : Nuurshadieq
+NIM : 1301171087
+**/
+{
+    printGenre(LC);
+    string genre;
+    cout<<"Genre yang anda inginkan: ";
+    cin.ignore();
+    getline(cin, genre);
+    findGenre(LC, genre);
+}
+
+void displayChild (List_child LC)
+/**
+Nama : Yoga Ajitama
+NIM : 1301170471
+**/
+{
+    cout<<"Film yang tersedia di database: "<<endl;
+    printInfo(LC);
+}
+
+void displayParent (List_parent LP)
+/**
+Nama : Yoga Ajitama
+NIM : 1301170471
+**/
+{
+    cout<<"Teater yang tersedia saat ini: "<<endl;
+    printInfo(LP);
+}
+
+void displayChildofParent(List_parent LP)
+{
+    /**
+    Nama : Nuurshadieq
+    NIM : 1301171087
+    **/
+
+    int noteater;
+    printInfo(LP);
+    cout<<"Masukkan nomor teater yang anda inginkan: ";
+    cin>>noteater;
+    address_parent P = findElm(LP,noteater);
+    printInfo(child(P));
+}

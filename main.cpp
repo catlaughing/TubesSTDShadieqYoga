@@ -56,13 +56,11 @@ void menu(bool start, List_child &LC, List_parent &LP)
     int pilihan;
     teater *pilih;
 
-    if (first(child(first(LP))) == NULL)
-        insertFirst(child(first(LP)), alokasi(findElm(LC, "Rampage")));
-
     cout<<"Welcome to YS Cinema"<<endl<<endl;
     cout<<"Silahkan pilih teater"<<endl;
     printInfo(LP);
     cout<<endl;
+    cout<<"(Tekan 99 untuk rekomendasi film berdasarkan genre)"<<endl;
     cout<<"(Tekan 0 untuk menjadi administrator)"<<endl;
     cout<<"Pilihan anda: ";
     cin>>pilihan;
@@ -84,7 +82,15 @@ void menu(bool start, List_child &LC, List_parent &LP)
             system("CLS");
         }
     }
-    else
+    else if (pilihan == 99)
+    {
+        RekomedasiGenre(LC,LP);
+    }
+    else //Beli tiket case functionality
+    /**
+Nama : Yoga Ajitama
+NIM : 1301170471
+**/
     {
         pilih = findElm(LP, pilihan);
 
@@ -142,14 +148,18 @@ void menu(bool start, List_child &LC, List_parent &LP)
 void option(List_child &LC, List_parent &LP)
 {
     cout<<"MENU"<<endl<<endl;
-    cout<<"1. Tambahkan film baru"<<endl;
-    cout<<"2. Tambah film ke teater"<<endl;
-    cout<<"3. Ganti film di teater"<<endl;
-    cout<<"4. Hapus film"<<endl;
-    cout<<"5. Bangun teater baru"<<endl;
-    cout<<"6. Hancurkan teater"<<endl;
-    cout<<"7. Lihat semua teater dan filmnya"<<endl;
-    cout<<"8. Cek Relasi"<<endl<<endl;
+    cout<<"1.  Tambahkan film baru ke database"<<endl;
+    cout<<"2.  Tambah film ke teater"<<endl;
+    cout<<"3.  Ganti film di teater"<<endl;
+    cout<<"4.  Hapus film"<<endl;
+    cout<<"5.  Bangun teater baru"<<endl;
+    cout<<"6.  Hancurkan teater"<<endl;
+    cout<<"7.  Lihat semua teater dan filmnya"<<endl;
+    cout<<"8.  Cek Relasi"<<endl;
+    cout<<"9.  Hapus Film dari Teater"<<endl;
+    cout<<"10. Lihat daftar film di database"<<endl;
+    cout<<"11. Lihat teater yang tersedia"<<endl;
+    cout<<"12. Lihat film dari suatu teater"<<endl<<endl;
     int choice;
     cout<<"Masukkan pilihan anda: ";
     cin>>choice;
@@ -196,6 +206,22 @@ void option(List_child &LC, List_parent &LP)
         cekRelasi(LC,LP);
         break;
     }
-
+    case 9 :
+        {
+            HapusFilmDariTeater(LP,LC);
+            break;
+        }
+    case 10 :
+        {
+            displayChild(LC);
+        }
+    case 11 :
+        {
+            displayParent(LP);
+        }
+    case 12 :
+        {
+            displayChildofParent(LP);
+        }
     }
 }
